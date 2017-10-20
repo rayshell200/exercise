@@ -24,8 +24,8 @@ public class ExerciseDaoImpl extends DefaultCustomerReviewDao implements Exercis
  	
 	
 	public Integer getProductsByRange(Double rangeLow, Double rangeHigh) {
-		String query = "SELECT count(product) FROM {" + "CustomerReview" + "} WHERE {" + "rating" + "}=?product AND {"
-				+ "language" + "}=?language ORDER BY {" + "creationtime" + "} DESC";
+		String query = "SELECT count(product) FROM {" + "CustomerReview" + "} WHERE {" + "rating" + "}>?rangeLow AND {"
+				+ "rating" + "}<?rangeHigh ";
 		FlexibleSearchQuery fsQuery = new FlexibleSearchQuery(query);
 		fsQuery.addQueryParameter("rangeLow", rangeLow);
 		fsQuery.addQueryParameter("rangeHigh", rangeHigh);
